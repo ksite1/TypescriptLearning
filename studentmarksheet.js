@@ -1,0 +1,25 @@
+var id = "21MCM015";
+var names = 'kaveenkumar';
+//Marksheet Detail
+var tamilSub = 90;
+var englishSub = 89;
+var mathSub = 89;
+var scienceSub = 95;
+var socialScienceSub = 99;
+console.log(typeof id);
+console.log(id instanceof String);
+console.log("==========MarkSheet:(Id : " + id + ",Name : " + names + ")=============");
+console.log("Id: ", id);
+console.log("Name: ", names);
+console.log("Tamil Subject: ", tamilSub);
+console.log("English Subject: ", englishSub);
+console.log("Math Subject: ", mathSub);
+console.log("Science Subject: ", scienceSub);
+console.log("Social Science Subject: ", socialScienceSub);
+var total = tamilSub + englishSub + mathSub + scienceSub + socialScienceSub;
+console.log("=======================");
+console.log("Total Marks : ", socialScienceSub);
+console.log("=======================");
+var average = total / 5;
+console.log("Average: ", (average));
+console.log("==========MarkSheet - End=============");

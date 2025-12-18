@@ -24,7 +24,8 @@ console.log(`Hobbies: ${hobbies.join(", ")}`);
 console.log(`Address: ${address[0]}, ${address[1]}`);
 console.log(`Role: ${role}`);
 console.log(`Company: ${company.name}, Location: ${company.location}`);
-console.log(`Favorite Color: ${Color[favoriteColor]}`);
+console.log(`Favorite
+   Color: ${Color[favoriteColor]}`);
 
 interface Person {
   id: number;
@@ -38,3 +39,22 @@ function add(a: number, b: number): number {
 }
 let sum: number = add(5, 10);
 console.log(`Sum: ${sum}`);
+
+// const uniquekey: symbol = Symbol('description');
+// const obj ={[uniquekey]: 'description contain the value'};
+// console.log(obj[uniquekey]);
+var v = {'n1':'test'};
+console.log(v);
+
+var value: unknown =1
+value = "kaveen"
+
+value = {
+  runAsException: ()=>{
+    console.log("It was an error");
+  }
+};
+
+if(typeof(value)==='object' && value != null ){
+(value as {runAsException : Function}).runAsException();
+}
