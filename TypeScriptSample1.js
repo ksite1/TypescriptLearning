@@ -43,6 +43,19 @@ value = {
         console.log("It was an error");
     }
 };
+value = "kkk";
 if (typeof (value) === 'object' && value != null) {
     value.runAsException();
 }
+else {
+    console.log("value: ", value);
+}
+var one = Symbol("id");
+var one = Symbol("id");
+console.log(one === one);
+var two = Symbol("id"); // unique is added means it would be constant
+var three = Symbol("id");
+console.log(two === three); // both contain "unique" keyword - it would be compare means automatically shows the error.
+var s1 = Symbol.for("id");
+var s2 = Symbol.for("id");
+console.log(s1 === s2); // it have same description - will shows the "true"

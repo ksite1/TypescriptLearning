@@ -34,17 +34,28 @@ var EmpBasicData = /** @class */ (function () {
     }
     return EmpBasicData;
 }());
-var EmpSystemAccess = /** @class */ (function () {
-    function EmpSystemAccess(id) {
-        this.EmpId = id;
+var EmpSystemAccess = /** @class */ (function (_super) {
+    __extends(EmpSystemAccess, _super);
+    function EmpSystemAccess(id, names, deviceModel, deviceName) {
+        var _this = _super.call(this, id, names) || this; // it must be first, when pass the value to base class.
+        _this.DeviceModel = "";
+        _this.DeviceName = "";
+        if (typeof id === "string" && typeof names === "string") {
+            _this.DeviceModel = deviceModel;
+            _this.DeviceName = deviceName;
+        }
+        return _this;
     }
+    EmpSystemAccess.prototype.GetEmloyeeDetails = function () {
+    };
     return EmpSystemAccess;
-}());
+}(EmpBasicData));
 var EmployeeDetails = /** @class */ (function (_super) {
     __extends(EmployeeDetails, _super);
     function EmployeeDetails() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    //  public override GetEmloyeeDetails(): void
     EmployeeDetails.prototype.GetEmloyeeDetails = function () {
         //concrete method
         console.log("===================== Employee Details - Start ================");
@@ -54,10 +65,12 @@ var EmployeeDetails = /** @class */ (function (_super) {
         console.log("Salary : " + this.Salary);
         // console.log("Level Tier : "+ Number(this.LevelTier));
         console.log("Level Tier : " + this.LevelTier);
+        console.log("Device Model : " + this.DeviceModel);
+        console.log("Device Name : " + this.DeviceName);
         console.log("===================== Employee Details - End ================");
     };
     return EmployeeDetails;
-}(EmpBasicData));
+}(EmpSystemAccess));
 // Proper Input Format checking method
 /*
 function isEmpProperFormat(emp: unknown | never) : emp is person{
@@ -66,17 +79,18 @@ function isEmpProperFormat(emp: unknown | never) : emp is person{
 }*/
 function isEmployeeProperFormat(emp) {
     var isValid = (typeof emp === "object" && emp !== null
-        && "id" in emp && "name" in emp && "position" in emp && "salary" in emp && "levelTier" in emp);
+        && "id" in emp && "name" in emp && "position" in emp && "salary" in emp && "levelTier" in emp && "deviceModel" in emp && "deviceName" in emp);
     if (!isValid) {
         throw new Error("Invalid format of isEmployeeProperFormat..... Employee Input: " + JSON.stringify(emp));
     }
     ;
 }
+;
 // Output of Employee details
 function GetOutputDetails(emp) {
     var _a;
-    var employee = new EmployeeDetails(emp.id, emp.name);
-    var sdeTier = employee.Position = emp.position;
+    var employee = new EmployeeDetails(emp.id, emp.name, emp.deviceModel, emp.deviceName);
+    employee.Position = emp.position;
     employee.Salary = parseFloat(emp.salary);
     employee.LevelTier = (_a = GetTierValue(emp.levelTier)) !== null && _a !== void 0 ? _a : TierEmp.NotSet;
     employee.GetEmloyeeDetails();
@@ -88,9 +102,11 @@ function GetTierValue(value) {
 var empInformation = {
     id: "21MCM015",
     name: "kaveenkumar",
-    position: "CA Auditor",
+    // position: "CA Auditor",
     salary: "111100",
-    levelTier: "SDE2"
+    levelTier: "SDE2",
+    deviceModel: "Asus Vivobook 16X",
+    deviceName: "Asus"
 };
 /*
 if(isEmpProperFormat(empInformation)){
